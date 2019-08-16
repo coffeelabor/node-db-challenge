@@ -15,4 +15,15 @@ router.get("/", (req, res) => {
     });
 });
 
+router.post("/", (req, res) => {
+  projectsDb
+    .insertP(req.body)
+    .then(project => {
+      res.status(201).json(project);
+    })
+    .catch(err => {
+      res.status(500).json({ error: "status five hundo" });
+    });
+});
+
 module.exports = router;
